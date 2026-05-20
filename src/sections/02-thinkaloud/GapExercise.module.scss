@@ -1,0 +1,222 @@
+.section {
+  @include flex-col;
+  gap: $space-5;
+  padding: $space-6;
+  background: $bg-surface;
+  border: $border-hair;
+  border-radius: $radius-md;
+}
+
+// ── PHASE TABS ─────────────────────────────────────────────────
+.phaseTabs {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 0;
+  border-bottom: $border-subtle;
+}
+
+.tab {
+  @include focus-ring;
+  display: flex;
+  align-items: baseline;
+  gap: $space-2;
+  padding: $space-3 $space-4;
+  background: none;
+  border: none;
+  border-bottom: 2px solid transparent;
+  cursor: pointer;
+  color: $ink-soft;
+  transition: color $dur-fast $ease-out;
+  text-align: start;
+
+  &:hover:not(:disabled) { color: $ink-mid; }
+  &:disabled { opacity: 0.4; cursor: not-allowed; }
+}
+
+.tabNum {
+  font-family: $font-mono;
+  font-size: 11px;
+  color: $ink-faint;
+  letter-spacing: 0.04em;
+}
+
+.tabLabel {
+  font-family: $font-body;
+  font-size: $text-sm;
+  font-weight: $weight-regular;
+}
+
+.tabActive {
+  color: $ink !important;
+  border-bottom-color: $accent !important;
+
+  .tabNum { color: $accent; }
+  .tabLabel { font-weight: $weight-medium; }
+}
+
+// ── PHASE BODY ─────────────────────────────────────────────────
+.phase { @include flex-col; gap: $space-4; }
+
+.phaseTitle {
+  @include headline-subsection;
+}
+
+.phaseHint {
+  @include body-paragraph;
+
+  strong { font-weight: $weight-medium; color: $accent; }
+  em { font-style: italic; color: $ink; }
+}
+
+// ── INPUTS ─────────────────────────────────────────────────────
+.textarea {
+  @include field-base;
+  resize: vertical;
+  min-height: 120px;
+  line-height: $leading-loose;
+}
+
+.checklist {
+  list-style: none;
+  margin: 0;
+  padding: 0 $space-5 0 0;
+  @include flex-col;
+  gap: $space-2;
+
+  li {
+    @include body-paragraph;
+    font-size: $text-sm;
+    padding-inline-start: $space-4;
+    position: relative;
+
+    &::before {
+      content: '·';
+      position: absolute;
+      inset-inline-start: 0;
+      top: -2px;
+      color: $accent;
+      font-size: 22px;
+      line-height: 1;
+    }
+  }
+}
+
+// ── FOOTER ─────────────────────────────────────────────────────
+.phaseFooter {
+  @include flex-between;
+  gap: $space-3;
+  padding-top: $space-3;
+  border-top: $border-subtle;
+}
+
+.counter {
+  font-family: $font-mono;
+  font-size: $text-md;
+  color: $ink;
+
+  em {
+    color: $ink-faint;
+    font-style: normal;
+    font-size: $text-xs;
+    margin-inline-start: 4px;
+  }
+}
+
+.next {
+  @include btn-primary;
+  display: inline-flex;
+  align-items: center;
+  gap: $space-2;
+
+  svg { font-size: 16px; }
+}
+
+.back { @include btn-link; }
+
+// ── COMPARE (PHASE 3) ──────────────────────────────────────────
+.compare {
+  display: grid;
+  grid-template-columns: 1fr auto 1fr;
+  gap: $space-5;
+  align-items: center;
+  padding: $space-7 0;
+  border-top: $border-subtle;
+  border-bottom: $border-subtle;
+
+  @media (max-width: $bp-sm) {
+    grid-template-columns: 1fr;
+    gap: $space-4;
+  }
+}
+
+.col {
+  @include flex-col;
+  gap: $space-1;
+  align-items: center;
+  text-align: center;
+}
+
+.colLabel {
+  @include eyebrow;
+  color: $ink-soft;
+}
+
+.colNum {
+  font-family: $font-display;
+  font-size: $text-4xl;
+  font-weight: $weight-light;
+  line-height: 1;
+  color: $ink;
+  letter-spacing: -0.02em;
+}
+
+.colNumAccent { color: $accent; }
+
+.colUnit {
+  @include eyebrow;
+  color: $ink-faint;
+}
+
+.colMid {
+  font-family: $font-mono;
+  font-size: $text-xl;
+  color: $ink-faint;
+  text-align: center;
+
+  @media (max-width: $bp-sm) { display: none; }
+}
+
+.ratio {
+  @include body-paragraph;
+  text-align: center;
+  font-style: italic;
+  color: $ink-mid;
+  margin-top: -$space-3;
+
+  strong {
+    color: $accent;
+    font-weight: $weight-medium;
+    font-style: normal;
+  }
+}
+
+.takeaway {
+  @include flex-col;
+  gap: $space-3;
+  padding: $space-5 $space-6;
+  background: $accent-faint;
+  border-radius: $radius-md;
+  margin-top: $space-3;
+
+  p {
+    @include body-paragraph;
+    color: $ink;
+    margin: 0;
+  }
+
+  strong { color: $accent-deep; font-weight: $weight-medium; }
+  em {
+    @include accent-underline;
+    font-style: normal;
+  }
+}

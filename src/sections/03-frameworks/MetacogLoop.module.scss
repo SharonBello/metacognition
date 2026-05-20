@@ -1,0 +1,108 @@
+.section {
+  @include flex-col;
+  gap: $space-5;
+  margin-top: $space-3;
+}
+
+.eyebrow { @include eyebrow; }
+.title   { @include headline-section; font-weight: $weight-light; }
+
+.flow {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: $space-3;
+
+  @media (max-width: $bp-md) {
+    grid-template-columns: 1fr;
+    gap: $space-4;
+  }
+}
+
+.phase {
+  @include flex-col;
+  gap: $space-3;
+  padding: $space-4;
+  background: $bg-surface;
+  border: $border-hair;
+  border-radius: $radius-md;
+  position: relative;
+}
+
+.phaseHead {
+  display: grid;
+  grid-template-columns: 32px 1fr;
+  gap: $space-2;
+  align-items: baseline;
+}
+
+.num {
+  font-family: $font-mono;
+  font-size: $text-sm;
+  color: $accent;
+  letter-spacing: 0.02em;
+}
+
+.phaseTitle {
+  font-family: $font-display;
+  font-size: $text-md;
+  font-weight: $weight-regular;
+  color: $ink;
+  line-height: 1.2;
+}
+
+.phaseEn {
+  @include eyebrow;
+  text-transform: none;
+  letter-spacing: 0.04em;
+  color: $ink-soft;
+  font-size: 10px;
+}
+
+.phaseBody {
+  @include body-paragraph;
+  font-size: $text-sm;
+}
+
+.phaseQuestion {
+  font-family: $font-display;
+  font-size: $text-sm;
+  color: $accent;
+  font-style: italic;
+  padding-top: $space-2;
+  border-top: $border-subtle;
+  margin-top: auto;
+}
+
+.arrow {
+  position: absolute;
+  left: -14px;
+  top: 50%;
+  transform: translateY(-50%);
+  font-family: $font-mono;
+  color: $accent;
+  font-size: 18px;
+  pointer-events: none;
+
+  @media (max-width: $bp-md) {
+    left: 50%;
+    top: auto;
+    bottom: -22px;
+    transform: translateX(-50%) rotate(-90deg);
+  }
+}
+
+.coda {
+  @include body-paragraph;
+  padding: $space-4 $space-5;
+  background: $accent-faint;
+  border-radius: $radius-md;
+  color: $ink;
+
+  strong {
+    font-weight: $weight-medium;
+    color: $accent-deep;
+  }
+}
